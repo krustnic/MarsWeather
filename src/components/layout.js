@@ -25,7 +25,10 @@ const Layout = ({ children }) => (
     render={data => (
       <div className={styles.container}>
         <main className={styles.content}>{children}</main>
-        <footer>© {new Date().getFullYear()}</footer>
+        <footer>
+          © {new Date().getFullYear()} Information about weather powered by{" "}
+          <a href="https://mars.nasa.gov/insight/">NASA InSight Mission</a>
+        </footer>
       </div>
     )}
   />
