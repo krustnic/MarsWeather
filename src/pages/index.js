@@ -49,7 +49,7 @@ class IndexPage extends React.Component {
           title="Latest Weather at Elysium Planitia, Mars"
           keywords={[`Mars`, `weather`, `nasa`]}
         />
-        <SiteTitle title="Погода на Марсе (Elysium Planitia)" />
+        <SiteTitle />
         <CurrentWeather day={this.state.day} />
         <Week days={this.state.week} onClick={this.changeDay} />
       </Layout>
