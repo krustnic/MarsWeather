@@ -15,6 +15,12 @@
   line-height: 36px;
 }
 
+@media (max-width: 420px) {
+  .month {
+    line-height: 28px;
+  }
+}
+
 .sol {
   text-align: center;
   font-size: 12px;
