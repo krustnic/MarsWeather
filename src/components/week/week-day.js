@@ -2,15 +2,15 @@ import React from "react"
 
 import styles from "./week-day.module.css"
 
-const WeekDay = ({ weather, onClick }) => (
+const WeekDay = ({ day, onClick }) => (
   <div
     className={styles.container}
     onClick={() => {
-      onClick(weather)
+      onClick(day)
     }}
   >
-    <div className={styles.day}>{weather.firstDate.day}</div>
-    <div className={styles.sol}>{weather.sol}</div>
+    <div className={styles.day}>{day.firstDate.day}</div>
+    <div className={styles.sol}>{day.solId}</div>
   </div>
 )
 

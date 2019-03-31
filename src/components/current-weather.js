@@ -11,7 +11,7 @@ const CurrentWeather = ({ day }) => (
     <div className={styles.group}>
       <Temperature day={day} />
     </div>
-    <Yesterday day={day} />
+    <Yesterday temperature={day.prevAT} />
     <Additional day={day} />
   </div>
 )

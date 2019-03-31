@@ -8,7 +8,7 @@ const Day = ({ day }) => (
       <div className={styles.day}>{day.firstDate.day}</div>
       <div className={styles.month}>{day.firstDate.month.full}</div>
     </div>
-    <div className={styles.sol}>SOL: {day.sol}</div>
+    <div className={styles.sol}>SOL: {day.solId}</div>
   </div>
 )
 

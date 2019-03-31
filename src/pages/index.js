@@ -6,15 +6,17 @@ import SiteTitle from "../components/title"
 import CurrentWeather from "../components/current-weather"
 import Week from "../components/week"
 
-import { getLastSol, getWeek } from "../utils/data-provider"
+import { getWeek } from "../utils/data-provider"
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
 
+    const week = getWeek()
+
     this.state = {
-      day: getLastSol(),
-      week: getWeek(),
+      day: week[week.length - 1],
+      week,
     }
 
     this.changeDay = this.changeDay.bind(this)

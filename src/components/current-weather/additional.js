@@ -7,16 +7,8 @@ import styles from "./additional.module.css"
 
 const Additional = ({ day }) => (
   <div className={styles.container}>
-    <AdditionalBlock
-      Icon={WindIcon}
-      value={Math.round(day.HWS.av)}
-      unit="м/с"
-    />
-    <AdditionalBlock
-      Icon={PressureIcon}
-      value={Math.round(day.PRE.av)}
-      unit="мм рт. ст."
-    />
+    <AdditionalBlock Icon={WindIcon} value={day.HWS.av} unit="м/с" />
+    <AdditionalBlock Icon={PressureIcon} value={day.PRE.av} unit="мм рт. ст." />
   </div>
 )
 

@@ -15,69 +15,68 @@ const MONTHES = {
   11: { full: "Декабрь", short: "ДЕК" },
 }
 
-function process(weather) {
-  const firstUTC = new Date(weather.First_UTC)
-  const lastUTC = new Date(weather.Last_UTC)
+const solsArr = data["sol_keys"]
 
-  weather.AT = weather.AT || {
-    av: "?",
-    mn: "?",
-    mx: "?",
+export function getWeek() {
+  const days = []
+  for (const solId of solsArr) {
+    days.push(processSol(data[solId], solId))
   }
 
-  weather.HWS = weather.HWS || {
-    av: "?",
-    mn: "?",
-    mx: "?",
+  return days
+}
+
+function round(item, key) {
+  if (item[key]) {
+    for (const name of ["av", "mn", "mx"])
+      if (item[key][name]) {
+        item[key][name] = Math.round(item[key][name])
+      } else {
+        item[key][name] = null
+      }
+
+    return item
   }
 
-  weather.PRE = weather.PRE || {
-    av: "?",
-    mn: "?",
-    mx: "?",
+  item[key] = {
+    av: null,
+    mx: null,
+    mn: null,
   }
 
-  weather.firstDate = {
+  return item
+}
+
+function processSol(sol, solId) {
+  const day = Object.assign({ solId }, sol)
+
+  // Round all values and fill default values
+  round(day, "AT")
+  round(day, "HWS")
+  round(day, "PRE")
+
+  // Format dates
+  const firstUTC = new Date(day.First_UTC)
+  const lastUTC = new Date(day.Last_UTC)
+
+  day.firstDate = {
     day: firstUTC.getDate(),
     month: MONTHES[firstUTC.getMonth()],
   }
 
-  weather.lastDate = {
+  day.lastDate = {
     day: lastUTC.getDate(),
     month: MONTHES[lastUTC.getMonth()],
   }
 
-  const prevSol = parseInt(weather.sol) - 1
+  // Add prev sol temperature
+  const prevSolId = parseInt(day.solId) - 1
 
-  if (data[prevSol + ""]) {
-    weather.prev = Math.round(data[prevSol + ""].AT.av)
+  if (data[prevSolId + ""]) {
+    day.prevAT = Math.round(data[prevSolId + ""].AT.av)
   } else {
-    console.log(data.sol, data[data.sol])
-    weather.prev = "?"
+    day.prevAT = null
   }
 
-  return weather
-}
-
-const solsArr = data["sol_keys"]
-
-export const lastSolId = solsArr[solsArr.length - 1]
-export const prevSolId = solsArr[solsArr.length - 2]
-
-export function getLastSol() {
-  return process(data[lastSolId])
-}
-
-export function getPrevSol() {
-  return process(data[prevSolId])
-}
-
-export function getWeek() {
-  const days = []
-  for (const sol of solsArr) {
-    data[sol].sol = sol
-    days.push(process(data[sol]))
-  }
-
-  return days
+  return day
 }
