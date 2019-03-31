@@ -7,7 +7,7 @@ const Values = ({ day }) => (
     <div className={styles.avg}>{day.AT.av} °C</div>
     <div className={styles.minmax}>
       <div>
-        {day.AT.mn} {day.AT.mx}
+        {day.AT.mn} .. {day.AT.mx}
       </div>
     </div>
   </div>
