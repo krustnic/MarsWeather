@@ -2,10 +2,8 @@ import React from "react"
 
 import styles from "./yesterday.module.css"
 
-const Yesterday = ({ weather }) => (
-  <div className={styles.container}>
-    Днем ранее: {Math.round(weather.AT.av)} °C
-  </div>
+const Yesterday = ({ day }) => (
+  <div className={styles.container}>Днем ранее: {day.prev} °C</div>
 )
 
 export default Yesterday

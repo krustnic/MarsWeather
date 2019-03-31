@@ -6,13 +6,13 @@ import Additional from "./current-weather/additional"
 
 import styles from "./current-weather.module.css"
 
-const CurrentWeather = ({ today, yesterday, solId }) => (
+const CurrentWeather = ({ day }) => (
   <div className={styles.container}>
     <div className={styles.group}>
-      <Temperature solId={solId} today={today} />
+      <Temperature day={day} />
     </div>
-    <Yesterday weather={yesterday} />
-    <Additional weather={today} />
+    <Yesterday day={day} />
+    <Additional day={day} />
   </div>
 )
 
