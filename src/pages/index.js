@@ -2,11 +2,14 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Langs from "../components/langs"
 import SiteTitle from "../components/title"
 import CurrentWeather from "../components/current-weather"
 import Week from "../components/week"
 
 import { getWeek, defaultDay } from "../utils/data-provider"
+import LangContext from "../utils/lang-context"
+import dict from "../utils/dict.json"
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -15,9 +18,8 @@ class IndexPage extends React.Component {
     this.state = {
       day: defaultDay,
       week: [],
+      lang: "en",
     }
-
-    this.changeDay = this.changeDay.bind(this)
   }
 
   componentDidMount() {
@@ -36,23 +38,32 @@ class IndexPage extends React.Component {
       })
   }
 
-  changeDay(day) {
+  changeDay = day => {
     this.setState({
       day: day,
     })
   }
 
+  changeLang = lang => {
+    this.setState({
+      lang: lang,
+    })
+  }
+
   render() {
     return (
-      <Layout>
-        <SEO
-          title="Latest Weather at Elysium Planitia, Mars"
-          keywords={[`Mars`, `weather`, `nasa`]}
-        />
-        <SiteTitle />
-        <CurrentWeather day={this.state.day} />
-        <Week days={this.state.week} onClick={this.changeDay} />
-      </Layout>
+      <LangContext.Provider value={dict[this.state.lang]}>
+        <Layout>
+          <SEO
+            title="Latest Weather at Elysium Planitia, Mars"
+            keywords={[`Mars`, `weather`, `nasa`]}
+          />
+          <Langs onClick={this.changeLang}> </Langs>
+          <SiteTitle />
+          <CurrentWeather day={this.state.day} />
+          <Week days={this.state.week} onClick={this.changeDay} />
+        </Layout>
+      </LangContext.Provider>
     )
   }
 }

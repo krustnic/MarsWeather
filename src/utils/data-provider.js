@@ -84,11 +84,13 @@ function processSol(sol, solId, data) {
   day.firstDate = {
     day: firstUTC.getDate(),
     month: MONTHES[firstUTC.getMonth()],
+    index: firstUTC.getMonth(),
   }
 
   day.lastDate = {
     day: lastUTC.getDate(),
     month: MONTHES[lastUTC.getMonth()],
+    index: lastUTC.getMonth(),
   }
 
   // Add prev sol temperature
