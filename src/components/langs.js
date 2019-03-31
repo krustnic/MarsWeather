@@ -1,31 +1,31 @@
 import React from "react"
 
 import styles from "./langs.module.css"
+import ABIcon from "../images/transformer-ab.svg"
+import DSIcon from "../images/transformer-ds.svg"
 import LangContext from "../utils/lang-context"
 
 class Langs extends React.Component {
   static contextType = LangContext
 
-  render() {
-    const { onClick } = this.props
+  cnangeToRU = () => {
+    this.props.onClick("ru")
+  }
 
+  cnangeToEN = () => {
+    this.props.onClick("en")
+  }
+
+  render() {
     return (
       <div className={styles.container}>
-        <div
-          onClick={() => {
-            onClick("ru")
-          }}
-          className={styles.lang}
-        >
-          RU
+        <div onClick={this.cnangeToRU} className={styles.lang}>
+          <ABIcon className={styles.icon} />
+          <div className={styles.langText}>RU</div>
         </div>
-        <div
-          onClick={() => {
-            onClick("en")
-          }}
-          className={styles.lang}
-        >
-          EN
+        <div onClick={this.cnangeToEN} className={styles.lang}>
+          <DSIcon className={styles.icon} />
+          <div className={styles.langText}>EN</div>
         </div>
       </div>
     )

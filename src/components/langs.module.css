@@ -1,9 +1,22 @@
 .container {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .lang {
   cursor: pointer;
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.langText {
   text-decoration: underline;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  margin-right: 10px;
 }

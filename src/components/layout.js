@@ -29,6 +29,16 @@ const Layout = ({ children }) => (
           © {new Date().getFullYear()} Information about weather powered by{" "}
           <a href="https://mars.nasa.gov/insight/">NASA InSight Mission</a>,
           source at <a href="https://github.com/krustnic/MarsWeather">github</a>
+          <br />
+          <div>
+            Icons made by{" "}
+            <a
+              href="https://www.flaticon.com/authors/those-icons"
+              title="Those Icons"
+            >
+              Those Icons
+            </a>
+          </div>
         </footer>
       </div>
     )}
