@@ -1,7 +1,12 @@
 .container {
   display: inline-flex;
   flex-direction: column;
-  width: 400px;
+}
+
+@media (min-width: 420px) {
+  .container {
+    width: 400px;
+  }
 }
 
 .group {

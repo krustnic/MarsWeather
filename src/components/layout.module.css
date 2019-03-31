@@ -1,6 +1,6 @@
 body {
   background-image: url("/MarsWeather/mars-1.jpg");
-  color: white;
+  color: #f5f5f5;
   font-family: "YS Text Web", Helvetica Neue, Arial;
   margin: 0;
   background-position: center;
@@ -9,7 +9,7 @@ body {
 a,
 a:visited,
 a:hover {
-  color: white;
+  color: #e8e8e8;
 }
 
 .container {
@@ -23,10 +23,19 @@ a:hover {
 
   display: flex;
   flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
-  margin-left: 10%;
-  margin-top: 5%;
+}
+
+@media (min-width: 420px) {
+  .content {
+    margin-left: 10%;
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 420px) {
+  .content {
+    padding: 5px;
+  }
 }
 
 footer {

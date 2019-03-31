@@ -1,4 +1,11 @@
 .container {
   display: flex;
   margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 420px) {
+  .container {
+    justify-content: center;
+  }
 }
