@@ -1,4 +1,4 @@
-import data from "../data/weather.json"
+import mockData from "../data/weather.json"
 
 const MONTHES = {
   0: { full: "Январь", short: "ЯНВ" },
@@ -15,12 +15,34 @@ const MONTHES = {
   11: { full: "Декабрь", short: "ДЕК" },
 }
 
-const solsArr = data["sol_keys"]
+export const defaultDay = {
+  AT: {
+    av: null,
+    mx: null,
+    mn: null,
+  },
+  HWS: {
+    av: null,
+    mx: null,
+    mn: null,
+  },
+  PRE: {
+    av: null,
+    mx: null,
+    mn: null,
+  },
+  firstDate: {
+    day: "?",
+    month: "?",
+  },
+  solId: "?",
+}
 
-export function getWeek() {
+export function getWeek(data) {
+  data = data || mockData
   const days = []
-  for (const solId of solsArr) {
-    days.push(processSol(data[solId], solId))
+  for (const solId of data["sol_keys"]) {
+    days.push(processSol(data[solId], solId, data))
   }
 
   return days
@@ -47,7 +69,7 @@ function round(item, key) {
   return item
 }
 
-function processSol(sol, solId) {
+function processSol(sol, solId, data) {
   const day = Object.assign({ solId }, sol)
 
   // Round all values and fill default values

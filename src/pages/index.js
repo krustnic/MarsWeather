@@ -6,20 +6,34 @@ import SiteTitle from "../components/title"
 import CurrentWeather from "../components/current-weather"
 import Week from "../components/week"
 
-import { getWeek } from "../utils/data-provider"
+import { getWeek, defaultDay } from "../utils/data-provider"
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
 
-    const week = getWeek()
-
     this.state = {
-      day: week[week.length - 1],
-      week,
+      day: defaultDay,
+      week: [],
     }
 
     this.changeDay = this.changeDay.bind(this)
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://mars.nasa.gov/rss/api/?feed=weather&category=insight&feedtype=json&ver=1.0"
+    )
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        const week = getWeek(data)
+        this.setState({
+          day: week.length > 0 ? week[week.length - 1] : defaultDay,
+          week,
+        })
+      })
   }
 
   changeDay(day) {
