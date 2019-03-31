@@ -20,7 +20,10 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "file-loader": "^3.0.1",
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.16.4",
+    "url-loader": "^1.1.2"
   },
   "keywords": [
     "gatsby"
@@ -32,7 +35,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "repository": {
     "type": "git",
