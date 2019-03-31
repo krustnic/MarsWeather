@@ -27,7 +27,8 @@ const Layout = ({ children }) => (
         <main className={styles.content}>{children}</main>
         <footer>
           © {new Date().getFullYear()} Information about weather powered by{" "}
-          <a href="https://mars.nasa.gov/insight/">NASA InSight Mission</a>
+          <a href="https://mars.nasa.gov/insight/">NASA InSight Mission</a>,
+          source at <a href="https://github.com/krustnic/MarsWeather">github</a>
         </footer>
       </div>
     )}
