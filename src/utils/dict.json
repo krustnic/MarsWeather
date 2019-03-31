@@ -4,6 +4,7 @@
     "yesterday_weather": "Днем ранее",
     "wind_speed": "м/с",
     "pressure_units": "мм рт. ст.",
+    "degrees": "C",
     "months": {
       "0": "Январь",
       "1": "Февраль",
@@ -24,6 +25,7 @@
     "yesterday_weather": "The day before",
     "wind_speed": "m/s",
     "pressure_units": "Pa",
+    "degrees": "F",
     "months": {
       "0": "January",
       "1": "February",

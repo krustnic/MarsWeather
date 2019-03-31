@@ -3,10 +3,10 @@ import React from "react"
 import styles from "./langs.module.css"
 import ABIcon from "../images/transformer-ab.svg"
 import DSIcon from "../images/transformer-ds.svg"
-import LangContext from "../utils/lang-context"
+import DictContent from "../utils/dict-context"
 
 class Langs extends React.Component {
-  static contextType = LangContext
+  static contextType = DictContent
 
   cnangeToRU = () => {
     this.props.onClick("ru")

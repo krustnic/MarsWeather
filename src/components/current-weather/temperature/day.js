@@ -1,10 +1,10 @@
 import React from "react"
 
 import styles from "./day.module.css"
-import LangContext from "../../../utils/lang-context"
+import DictContent from "../../../utils/dict-context"
 
 class Day extends React.Component {
-  static contextType = LangContext
+  static contextType = DictContent
 
   render() {
     const { day } = this.props
